@@ -32,7 +32,7 @@ body{height:1000px;}
 	border-radius: 6px;
 
 	.header{
-		font-weight: 800;
+		font-weight: 600;
 		font-size: 16px;
 		line-height: 40px;
 		border-bottom: 1px solid #e0e0e0;
@@ -40,6 +40,10 @@ body{height:1000px;}
 
 	.body{
 		padding-top: 20px;
+
+		.control-label{
+			font-weight: 400;
+		}
 	}
 
 	.footer{
@@ -54,4 +58,8 @@ body{height:1000px;}
 	cursor: pointer;
 	float: right;
 	right:10px;
+}
+
+.other{
+	p{color:#007ACC; text-align:center;}
 }

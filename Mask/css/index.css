@@ -27,12 +27,14 @@ body {
   background: white;
   border-radius: 6px; }
   .login-content .header {
-    font-weight: 800;
+    font-weight: 600;
     font-size: 16px;
     line-height: 40px;
     border-bottom: 1px solid #e0e0e0; }
   .login-content .body {
     padding-top: 20px; }
+    .login-content .body .control-label {
+      font-weight: 400; }
   .login-content .footer button {
     float: right; }
 
@@ -41,5 +43,9 @@ body {
   cursor: pointer;
   float: right;
   right: 10px; }
+
+.other p {
+  color: #007ACC;
+  text-align: center; }
 
 /*# sourceMappingURL=index.css.map */

@@ -7,9 +7,48 @@
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
-	<div class="mask">
-		
+<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="../" class="navbar-brand">Bootstrap</a>
+    </div>
+    <nav id="bs-navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="../getting-started/" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click', 'V3导航-起步'])">起步</a>
+        </li>
+        <li class="active">
+          <a href="../css/" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click', 'V3导航-全局CSS样式'])">全局 CSS 样式</a>
+        </li>
+        <li>
+          <a href="../components/" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click', 'V3导航-组件'])">组件</a>
+        </li>
+        <li>
+          <a href="../javascript/" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click', 'V3导航-JavaScript插件'])">JavaScript 插件</a>
+        </li>
+        <li>
+          <a href="../customize/" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click', 'V3导航-定制'])">定制</a>
+        </li>
+        <li><a href="http://expo.bootcss.com" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click', 'V3导航-网站实例'])" target="_blank">网站实例</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="javascript:" id="loginBtn">登 录</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+	<!--遮罩层-->
+	<div class="mask">	
 	</div>
+
+	<!--登录界面(弹出层)-->
 	<div class="login">
 		<div class="login-content">
 			<div class="header">登 录/Sign in<span class="close-mask">x</span></div>
@@ -18,24 +57,39 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">用户名:</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control"></input>
+							<input type="text" class="form-control" placeholder="请输入用户名或者邮箱地址" />
 						</div>		
 					</div>
 
 					<div class="form-group">
 						<label class="col-sm-2 control-label">密&#12288;码:</label>
 						<div class="col-sm-9">
-							<input type="password" class="form-control"></input>
+							<input type="password" class="form-control" placeholder="请输入你的密码" />
 						</div>		
 					</div>
-						
+					
 					<div class="form-group">
-						<div class="col-sm-offset-8">
-							<button class="btn btn-primary">确 定</button>
-							<button class="btn btn-danger">取 消</button>
+						<div class="col-sm-offset-2 col-sm-8">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox"> 记住我(一周免登录)
+								</label>
+								<a class="pull-right" href="javascript:">忘记密码?</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-7">
+							<button type="submit" class="btn btn-primary">确 定</button>
+							<button type="button" class="btn btn-danger" id='cancelBtn'>取 消</button>
 						</div>
 					</div>
 				</form>
+
+				<div class="other">
+					<p>还没有账号？<a href="javascript:">快速注册</a></p>
+				</div>
 			</div>
 			<div class="footer">
 			</div>
@@ -45,5 +99,53 @@
 	
 	<script src="http://cdn.bootcss.com/jquery/1.12.1/jquery.min.js"></script>
 	<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		(function(){
+			//页面的宽度和高度
+			var sHeight = document.documentElement.scrollHeight;
+			var sWidth = document.documentElement.scrollWidth;
+			//设置遮罩层的初始化
+			var oMask = document.getElementsByClassName('mask')[0];
+			var oLogin = document.getElementsByClassName('login')[0];
+			oMask.style.height = sHeight + 'px';
+			oMask.style.width = sWidth + 'px';
+			oMask.style.display = 'none';
+			oLogin.style.display = 'none';
+			
+			//监听登录点击按钮
+			var loginBtn = document.getElementById('loginBtn');
+			loginBtn.addEventListener('click', function(){
+				showMask(oLogin)
+			});
+
+			//监听关闭或取消按钮
+			var closeBtn = document.getElementsByClassName('close-mask')[0];
+			closeBtn.addEventListener('click', function(){
+				closeMask(oLogin);
+			})
+			//cancel Button
+			var cancelBtn = document.getElementById('cancelBtn');
+			cancelBtn.addEventListener('click', function(){
+				closeMask(oLogin);
+			})
+
+			/**
+			*遮罩层相关操作
+			*/
+			function showMask(ele){
+				oMask.style.display ='inline';
+				if(ele!=null){
+					ele.style.display = 'inline';
+				};
+			}
+
+			function closeMask(ele){
+				oMask.style.display ='none';
+				if(ele!=null){
+					ele.style.display = 'none';
+				};
+			}
+		})();
+	</script>
 </body>
 </html>
