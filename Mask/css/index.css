@@ -1,0 +1,45 @@
+body {
+  height: 1000px; }
+
+* {
+  font-family: 'Microsoft Yahei'; }
+
+.mask {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: black;
+  left: 0;
+  top: 0;
+  opacity: 0.35;
+  filter: alpha(opacity=35);
+  z-index: 100; }
+
+.login {
+  position: fixed;
+  left: 30%;
+  top: 23%;
+  z-index: 101; }
+
+.login-content {
+  width: 500px;
+  padding: 5px 10px;
+  background: white;
+  border-radius: 6px; }
+  .login-content .header {
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 40px;
+    border-bottom: 1px solid #e0e0e0; }
+  .login-content .body {
+    padding-top: 20px; }
+  .login-content .footer button {
+    float: right; }
+
+.close-mask {
+  position: absolute;
+  cursor: pointer;
+  float: right;
+  right: 10px; }
+
+/*# sourceMappingURL=index.css.map */

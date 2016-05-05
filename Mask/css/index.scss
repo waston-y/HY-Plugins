@@ -1,0 +1,57 @@
+@mixin opacity($opacity){
+	opacity: $opacity;
+	filter: alpha(opacity = $opacity * 100);
+}
+
+body{height:1000px;}
+
+*{font-family:'Microsoft Yahei';}
+
+.mask{
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	background:black;
+	left: 0;
+	top: 0;
+	@include opacity(0.35);
+	z-index: 100;
+}
+
+.login{
+	position: fixed;
+	left: 30%;
+	top: 23%;
+	z-index: 101;
+}
+
+.login-content{
+	width:500px;
+	padding: 5px 10px;
+	background: white;
+	border-radius: 6px;
+
+	.header{
+		font-weight: 800;
+		font-size: 16px;
+		line-height: 40px;
+		border-bottom: 1px solid #e0e0e0;
+	}
+
+	.body{
+		padding-top: 20px;
+	}
+
+	.footer{
+		button{
+			float: right;
+		}
+	}
+}
+
+.close-mask{
+	position: absolute;
+	cursor: pointer;
+	float: right;
+	right:10px;
+}
