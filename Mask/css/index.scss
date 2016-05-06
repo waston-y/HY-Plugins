@@ -7,6 +7,32 @@ body{height:1000px;}
 
 *{font-family:'Microsoft Yahei';}
 
+.navbar{
+	color:white;
+	border-bottom: none;
+	.navbar-brand{
+		color: white;
+	}
+	.navbar-header{
+		button{ 
+			color: white;
+			span{color:white;}
+		}
+	}
+	ul{
+		li{
+			a{
+				font-weight: 200;
+				color: white;
+				&:hover{
+					color: #007ACC;
+					background:none;
+					font-weight: 600;
+				}
+			}
+		}
+	}
+}
 .mask{
 	height: 100%;
 	width: 100%;

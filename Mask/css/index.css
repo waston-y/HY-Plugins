@@ -4,6 +4,23 @@ body {
 * {
   font-family: 'Microsoft Yahei'; }
 
+.navbar {
+  color: white;
+  border-bottom: none; }
+  .navbar .navbar-brand {
+    color: white; }
+  .navbar .navbar-header button {
+    color: white; }
+    .navbar .navbar-header button span {
+      color: white; }
+  .navbar ul li a {
+    font-weight: 200;
+    color: white; }
+    .navbar ul li a:hover {
+      color: #007ACC;
+      background: none;
+      font-weight: 600; }
+
 .mask {
   height: 100%;
   width: 100%;
