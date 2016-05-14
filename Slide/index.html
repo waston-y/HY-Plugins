@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		ul{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			height: 320px;
+			overflow: hidden;
+		}
+
+		li{
+			margin: 0 auto;
+			text-align: center;
+		}
+		img{
+			height: 320px; width: 1000px;
+		}
+		.mask{
+			position: absolute;
+			top:10px;
+			left: 600px;
+			z-index: 10;
+		}
+		.mask li{
+			margin-top:100px;
+			color:white;
+			font-weight: 600;
+			font-size: 30px;
+		}
+		/*.item{
+			height: 300px; width: 1000px;
+		}*/
+	</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li class="item">
+				<img src="img/background1.jpg" alt="">
+			</li>
+			<li class="item" style="display: none;">
+				<img src="img/background2.jpg" alt="">
+			</li>
+			<li class="item" style="display: none;">
+				<img src="img/background3.jpg" alt="">
+			</li>
+			<li class="item" style="display: none;">
+				<img src="img/background4.jpg" alt="">
+			</li>
+		</ul>
+		<ul class="mask">
+			<li class="notes">这是第一页的</li>
+			<li class="notes" style="display: none;">这是第二页的</li>
+			<li class="notes" style="display: none;">这是第三页的</li>
+			<li class="notes" style="display: none;">这是第四页的</li>
+		</ul>
+	</div>
+
+	<div>
+		<button id="btn" onclick="btnClick()">change</button>
+	</div>
+
+	<script type="text/javascript">
+	window.onload = function(){
+		var items = document.getElementsByClassName('item');
+		var notes = document.getElementsByClassName('notes');
+		setInterval(function(){
+			slide(items)||slide(notes);
+		}, 5000);
+	};
+
+	function btnClick(){
+		var items = document.getElementsByClassName('item');
+		var notes = document.getElementsByClassName('notes');
+		slide(items) || slide(notes);
+	}
+
+	var slide = function(eles){
+		var items = eles || [];
+		for(var i = 0; i<items.length; i++){
+			if(items[i].style.display != 'none'){
+				items[i].style.display = 'none';
+				if(i == items.length - 1){
+					items[0].style.display = "block";
+					break;
+				}else{
+					items[i+1].style.display = "block";
+					break;
+				}
+			}
+		}
+	}
+	
+	</script>
+</body>
+</html>
