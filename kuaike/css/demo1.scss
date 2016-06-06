@@ -1,0 +1,49 @@
+/*
+** css for demo1
+*/
+
+//$bg-mouseenter: #F9A825;
+
+*{
+	font-family: 'Microsoft Yahei';
+}
+.mobile{
+	margin: 0 auto;
+	height: 610px;
+	width: 288px;
+	background: url('../imgs/mobile.png');
+	padding: 99px 18px 79px 25px;
+
+	.screen{
+		background: #eeeeee;
+		height: 100%;
+		width: 100%;
+		border: 1px solid black;
+	}
+}
+
+.intro{
+	padding-top: 100px;
+	
+	.item{
+		text-align: center;
+		cursor: pointer;
+		height: 150px;
+		// &:hover{
+		// 	color: $bg-mouseenter;
+		// 	span{
+		// 		color: $bg-mouseenter;
+		// 	}
+		// }
+		span{
+			font-size: 40px;
+			color: #b0b0b0;
+		}
+
+		.text{
+			padding-top: 15px;
+			line-height: 15px;
+		}
+
+	}
+}

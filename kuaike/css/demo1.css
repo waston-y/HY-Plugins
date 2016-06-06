@@ -1,0 +1,32 @@
+/*
+** css for demo1
+*/
+* {
+  font-family: 'Microsoft Yahei'; }
+
+.mobile {
+  margin: 0 auto;
+  height: 610px;
+  width: 288px;
+  background: url("../imgs/mobile.png");
+  padding: 99px 18px 79px 25px; }
+  .mobile .screen {
+    background: #eeeeee;
+    height: 100%;
+    width: 100%;
+    border: 1px solid black; }
+
+.intro {
+  padding-top: 100px; }
+  .intro .item {
+    text-align: center;
+    cursor: pointer;
+    height: 150px; }
+    .intro .item span {
+      font-size: 40px;
+      color: #b0b0b0; }
+    .intro .item .text {
+      padding-top: 15px;
+      line-height: 15px; }
+
+/*# sourceMappingURL=demo1.css.map */
