@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>demo1 - phone</title>
 	<link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/demo1.css" rel="stylesheet">
 </head>
@@ -16,10 +16,10 @@
 					<p id="intro-text"></p>
 
 					<div class="pictures">
-						<img class="pic" src="imgs/carousel-1.jpg" style="display: inline;"/>
-						<img class="pic" src="imgs/carousel-2.jpg" style="display: none;"/>
-						<img class="pic" src="imgs/carousel-3.jpg" style="display: none;"/>
-						<img class="pic" src="imgs/carousel-4.jpg" style="display: none;"/>
+						<img class="pic" height="100%" width="99%" src="imgs/carousel-1.jpg"/>
+						<img class="pic" height="100%" width="99%" src="imgs/carousel-2.jpg" style="display: none;"/>
+						<img class="pic" height="100%" width="99%" src="imgs/carousel-3.jpg" style="display: none;"/>
+						<img class="pic" height="100%" width="99%" src="imgs/carousel-4.jpg" style="display: none;"/>
 					</div>
 				</div>
 			</div>
@@ -144,18 +144,19 @@
 			*/
 
 			var flag = true; //标识初始载入，未触发移入移出事件，图片上屏幕应显示图片
-			var pics = document.getElementsByClassName('pic');
+			var pics = document.getElementsByClassName('pic'); //获得所有幻灯片中定义好的img元素
+
+			// 图片轮播定时器
 			var imgInterval = setInterval(function(){
-				console.log('123123');
 				for(var i = 0; i < pics.length; i++){
-					console.log(i);
-					console.log(pics[i].style.display);
-					if(pics[i].style.display == 'inline'){
+					if(pics[i].style.display != 'none'){
 						pics[i].style.display = "none";
 						if(i == pics.length - 1){
-							pics[0].style.display = 'inline';
+							pics[0].style.display = 'block';
+							break;
 						}else{
-							pics[i+1].style.display = 'inline';
+							pics[i + 1].style.display = 'block';
+							break;
 						}
 					}
 				}
@@ -167,12 +168,13 @@
 				
 				//判断之前是否已经触发事件，若没有触发，为容器定义样式
 				if(flag){
-					console.log(123);
+					
+					clearInterval(imgInterval); //停止幻灯片效果
 					var slide = document.getElementsByClassName('pictures')[0];
 					slide.style.display = 'none';  //隐藏幻灯片
 
 					var mobileScreen = document.getElementsByClassName('screen')[0];
-					mobileScreen.style.padding = '50px 30px 0px 30px;';  //设置手机图片上的padding值
+					mobileScreen.style.padding = '50px 30px 0px 30px';  //设置手机图片上的padding值
 				}
 
 				//加载信息并显示

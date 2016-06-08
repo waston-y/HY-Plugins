@@ -9,7 +9,7 @@
   height: 610px;
   width: 288px;
   background: url("../imgs/mobile.png");
-  padding: 99px 18px 79px 25px; }
+  padding: 99px 18px 80px 25px; }
   .mobile .screen {
     background: #eeeeee;
     height: 100%;
@@ -22,9 +22,6 @@
       top: 0;
       left: 0;
       z-index: 99; }
-      .mobile .screen .pictures img {
-        width: 100%;
-        height: 100%; }
     .mobile .screen span {
       font-size: 80px;
       line-height: 120px;

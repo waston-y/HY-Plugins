@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo2 - circle</title>
+	<style type="text/css">
+		.container{ 
+			margin: 0 auto;
+			margin-top: 100px; 
+			height: 584px;
+			width: 584px;
+		}
+		.pic{width: 100%; height: 100%;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<img class="pic" src="imgs/0.png"/>
+		<img class="pic" src="imgs/1.png" style="display: none;" />
+		<img class="pic" src="imgs/2.png" style="display: none;" />
+		<img class="pic" src="imgs/3.png" style="display: none;" />
+		<img class="pic" src="imgs/4.png" style="display: none;" />
+		<img class="pic" src="imgs/5.png" style="display: none;" />
+		<img class="pic" src="imgs/6.png" style="display: none;" />
+		<img class="pic" src="imgs/7.png" style="display: none;" />
+		<img class="pic" src="imgs/8.png" style="display: none;" />
+	</div>
+
+
+	<script src="http://cdn.bootcss.com/jquery/1.12.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		//jQuery
+		$(document).ready(function() {
+			var pics = $('.pic'); //获得所有图片标签
+
+			//在容器内的鼠标移动事件
+			$('.container').mousemove(function() {
+				var X = event.offsetX;  //相对于容器左上定点的x距离
+				var Y = event.offsetY;	//相对于容器左上定点的y距离
+				var id = getArea(X, Y);
+				for(var i = 0; i < pics.length; i++){
+					if( i !== id){
+						$(pics[i]).css('display', 'none');
+					} else{
+						$(pics[i]).css('display', 'block');
+					}
+				}
+			});
+
+
+			//计算鼠标落点
+			function getArea(x, y){
+				var id = 0;
+				var x0 = x - 292;  //为了计算方便 圆心移到坐标原点
+				var y0 = y - 292;
+				var temp = (x0 * x0) + (y0 * y0)
+				if(temp < 292 * 292) {
+					if( x0 > 0 && y0 < 0){
+						id = (x0 < Math.abs(y0)) ? 1 : 2;
+					}else if(x0 > 0 && y0 > 0){
+						id = (x0 > y0) ? 3 : 4;
+					}else if(x0 < 0 && y0 > 0){
+						id = (Math.abs(x0) < y0) ? 5 : 6;
+					}else{
+						id = (Math.abs(x0) > Math.abs(y0)) ? 7 : 8;
+					}
+
+					//判断是否落点在小圆内;
+					if(temp < 146 * 146) id = 0;  //小圆内
+				}
+				return id;
+			}
+		});
+	</script>
+</body>
+</html>
