@@ -11,7 +11,16 @@
 		<div class="col-sm-5">
 			<div class="mobile">
 				<div class="screen">
-					
+					<span id="intro-icon"></span>
+					<h4 id="intro-title"></h4>
+					<p id="intro-text"></p>
+
+					<div class="pictures">
+						<img class="pic" src="imgs/carousel-1.jpg" style="display: inline;"/>
+						<img class="pic" src="imgs/carousel-2.jpg" style="display: none;"/>
+						<img class="pic" src="imgs/carousel-3.jpg" style="display: none;"/>
+						<img class="pic" src="imgs/carousel-4.jpg" style="display: none;"/>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -87,5 +96,109 @@
 
 	<script src="http://cdn.bootcss.com/jquery/1.12.1/jquery.min.js"></script>
 	<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		window.onload = function() {
+			//事件处理对象
+			var eventUtil = {
+				addEventListener: function(ele, type, handler){
+					if(ele.addEventListener){
+						ele.addEventListener(type, handler, false);
+					}else if(element.attachEvent){
+						ele.attachEvent("on" + type, handler);
+					}else{
+						ele["on" + type] = handler;
+					}
+				}
+			}
+
+			var items = document.getElementsByClassName('item'); //获取所有class为'item'的元素
+			var introIcon = document.getElementById('intro-icon');
+			var introTitle = document.getElementById('intro-title');
+			var introText = document.getElementById('intro-text');
+
+			//左侧手机屏幕内展示的内容列表
+			var message = [
+				// 1
+				{ icon: 'glyphicon glyphicon-cloud-upload', title:'云端服务 省心省力', info: 'SaaS架构，云端服务；软件开发、服务器、带宽、多地部署、全网加速、安全加密、技术运维，所有一切，统统无需操心，真正的“拎包入住”。而且费用低廉，保证每个企业都能用得起。'},
+				// 2
+				{ icon: 'glyphicon glyphicon-map-marker', title:'场景化设计 即用即学', info: '学了用不上的技能是储备，学了马上能用的技能是收益。快课独有场景化学习核心技术，帮助学员即用即学、随时随地，大幅缩短学习转化时间，快速看到学习收益，提升学习原动力。'},
+				// 3
+				{ icon: 'glyphicon glyphicon-globe', title:'全价值链学员 完美覆盖', info: '员工、供应商、渠道、合作伙伴、用户、客户都可以使用的新型学习方式，结合快课人丰富的实施实践经验分享，完美帮助企业实现覆盖全价值链的学习服务。'},
+				// 4
+				{ icon: 'glyphicon glyphicon-refresh', title:'技术领先 高速稳定', info: '阿里云架构技术，支持千万级用户使用、百万级并发，真正的大用户量、高并发SaaS学习平台；所有内容都针对手机使用自动优化，不仅节省用户流量，而且高速、稳定。'},
+				// 5
+				{ icon: 'glyphicon glyphicon-phone', title:'微信钉钉 快捷接入', info: '企业只要有微信企业号、服务号、订阅号或钉钉，均可申请开通学习平台，一步接入，马上可用。'},
+				// 6
+				{ icon: 'glyphicon glyphicon-fullscreen', title:'跨平台使用 上手简单', info: '无论是手机、PAD还是电脑，学员均无需下载、安装、学习任何其他软件，打开微信、钉钉或浏览器，就可以马上进入学习。一线员工移动学习，也可以SO EASY！'},
+				// 7
+				{ icon: 'glyphicon glyphicon-dashboard', title:'功能强大 操作易用', info: '功能强大健壮、操作简单易用，是我们所秉持的产品研发理念和方法，用最简洁精益的布局和交互实现诸多功能、以操作体验为核心、不用说明书即会操作，是我们的追求。'},
+				// 8
+				{ icon: 'glyphicon glyphicon-list', title:'内容为王 取之有道', info: '内容是学习的核心，适合自己的内容是核心中的核心。我们亲历中国企业十多年e-Learning之路，从提供通用课程，到帮助客户打造自有内容，深知客户拥有自身内容体系的重要性。这一次，我们要帮助打造的不仅是内容本身，更有企业生产自身内容的持续造血能力。'},
+				// 9
+				{ icon: 'glyphicon glyphicon-circle-arrow-up', title:'持续升级 专业服务', info: '产品终身持续升级、快速迭代，不断丰富各种学习场景、满足各种学习需求，帮助组织构建智慧大脑。在线客服、专属客服、专业培训、实施支持、咨询研讨，保障客户使用无忧。'},
+			];
+
+
+			/*
+			*** 处理函数
+			*/
+
+			var flag = true; //标识初始载入，未触发移入移出事件，图片上屏幕应显示图片
+			var pics = document.getElementsByClassName('pic');
+			var imgInterval = setInterval(function(){
+				console.log('123123');
+				for(var i = 0; i < pics.length; i++){
+					console.log(i);
+					console.log(pics[i].style.display);
+					if(pics[i].style.display == 'inline'){
+						pics[i].style.display = "none";
+						if(i == pics.length - 1){
+							pics[0].style.display = 'inline';
+						}else{
+							pics[i+1].style.display = 'inline';
+						}
+					}
+				}
+			}, 2000);
+
+			//鼠标移入事件
+			var mouseOver = function(){
+				this.className = this.className + " " + "item-hover";
+				
+				//判断之前是否已经触发事件，若没有触发，为容器定义样式
+				if(flag){
+					console.log(123);
+					var slide = document.getElementsByClassName('pictures')[0];
+					slide.style.display = 'none';  //隐藏幻灯片
+
+					var mobileScreen = document.getElementsByClassName('screen')[0];
+					mobileScreen.style.padding = '50px 30px 0px 30px;';  //设置手机图片上的padding值
+				}
+
+				//加载信息并显示
+				for(var i = 0; i < items.length; i++){
+					if(this == items[i]){
+						introIcon.className = message[i].icon;  	//图片
+						introTitle.innerHTML = message[i].title;	//标题
+						introText.innerHTML = message[i].info;		//信息
+					}
+				};
+			};
+
+			//鼠标移出事件
+			var mouseOut = function(){
+				this.className = "item col-sm-4";
+			};
+
+			//为各个Item绑定事件
+			(function(){
+				for(var i = 0; i < items.length; i++){
+					eventUtil.addEventListener(items[i], 'mouseover', mouseOver);
+					eventUtil.addEventListener(items[i], 'mouseout', mouseOut);
+				}
+			})();
+		
+		}
+	</script>
 </body>
 </html>
