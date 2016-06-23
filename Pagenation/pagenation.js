@@ -25,21 +25,34 @@ var pager = {
 			
 			var firstLi = document.createElement('li');
 			var firstA = document.createElement('a');
-			firstA.innerHTML = "<<"
+			firstA.innerHTML = "上一页"
 			firstLi.appendChild(firstA);
+			firstLi.className = "previous";
 			ul.appendChild(firstLi);
 
-			for(var i =0; i<items.length; i++){
-				ul.appendChild(items[i]);
-			}
+			appendList(items, ul);
+
 			var lastLi = document.createElement('li');
 			var lastA = document.createElement('a');
-			lastA.innerHTML = ">>"
+			lastA.innerHTML = "下一页"
 			lastLi.appendChild(lastA);
+			lastLi.className = "next";
 			ul.appendChild(lastLi);
 
 			var box = document.getElementsByClassName('pager')[0];
 			box.appendChild(ul);		
+		}
+
+
+		function appendList(items, parent){
+			if(items.length < 10){
+				for(var i =0; i < items.length; i++){
+					items[i].className = "item";
+					parent.appendChild(items[i]);
+				}
+			}else{
+
+			}
 		}
 
 		compile(items);

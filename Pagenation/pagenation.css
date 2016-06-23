@@ -11,15 +11,14 @@
 }
 
 .pager ul{
-
+	list-style: none;
 }
 
-.pager ul li{
-	list-style: none;
+.pager ul .item{
 	float: left;
+	width: 30px;
+	height: 30px;
 	margin-left: 5px;
-	width: 35px;
-	height: 35px;
 }
 .pager ul li a{ 
 	display: block;
@@ -28,10 +27,16 @@
 	border: 1px solid #007ACC;
 	border-radius: 4px;
 	text-align: center;
-	line-height: 35px;
+	line-height: 30px;
 	}
 
 .pager ul li a:hover{
 	background: #007ACC;
 	color: white;
+}
+
+.previous, .next{
+	width: 60px;
+	float: left;
+	margin-left: 5px;
 }
