@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>waterfall</title>
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+	<style type="text/css">
+		.item{
+			padding: 10px;
+		}
+		.box{
+			border: 1px solid #ccc;
+		}
+		.box img{
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="nav navbar-header" style="height: 50px; width: 100%" >
+		
+	</div>
+	<div class="container-fluid row" id="content" style="margin-right: 0; margin-left: 0">
+		<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol1.png" />
+			</div>
+		</div>
+		<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol2.png" />
+			</div>
+		</div>
+		<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol3.png" />
+			</div>
+		</div>
+		<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol4.png" />
+			</div>
+		</div>
+		<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol5.png" />
+			</div>
+		</div>
+		<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol6.png" />
+			</div>
+		</div>
+		<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol7.png" />
+			</div>
+		</div>
+		<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol8.png" />
+			</div>
+		</div>
+				<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol6.png" />
+			</div>
+		</div>
+		<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol7.png" />
+			</div>
+		</div>
+		<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol8.png" />
+			</div>
+		</div>
+				<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol9.png" />
+			</div>
+		</div>
+		<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol10.png" />
+			</div>
+		</div>
+		<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol11.png" />
+			</div>
+		</div>
+		<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol12.png" />
+			</div>
+		</div>
+				<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol13.png" />
+			</div>
+		</div>
+		<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol14.png" />
+			</div>
+		</div>
+		<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol15.png" />
+			</div>
+		</div>
+		<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol6.png" />
+			</div>
+		</div>
+				<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol7.png" />
+			</div>
+		</div>
+		<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol18.png" />
+			</div>
+		</div>
+		<div class="item col-md-3 col-xs-6">
+			<div class="box">
+				<img src="pics/lol19.png" />
+			</div>
+		</div>
+	</div>
+	
+
+	<script src="http://cdn.bootcss.com/jquery/1.12.1/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	window.onscroll = function(){
+		
+		var h = window.scrollY;
+		var domHeight = document.body.scrollHeight;
+		console.log(domHeight);
+		if(h > domHeight - 500){
+			insertItem();
+		}
+	}
+
+	function insertItem(){
+		var imgArr = [
+			'lol3.png', 'lol4.png', 'lol2.png', 'lol14.png', 'lol8.png', 'lol7.png'
+		];
+
+		imgArr.forEach(function(element, index){
+			var content = document.getElementById('content');
+			var item = document.createElement('div');
+			item.className = 'item col-md-3 col-xs-6';
+			var box = document.createElement('div');
+			box.className = 'box';
+			var img = document.createElement('img');
+			img.setAttribute('src', 'pics/' + element);
+
+			box.appendChild(img);
+			item.appendChild(box);
+			content.appendChild(item);			
+		});
+
+
+
+	}
+
+	</script>
+</body>
+</html>
