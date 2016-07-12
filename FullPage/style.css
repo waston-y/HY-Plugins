@@ -1,0 +1,39 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Microsoft Yahei';
+}
+
+html,body{
+	height: 100%;
+	width: 100%;
+}
+
+.container{
+	overflow: hidden;
+}
+
+.container,.sections, .section{
+	width: 100%;
+	height: 100%;
+}
+
+.sections #section1{
+	background: url(imgs/1.jpg) no-repeat;
+	background-size: cover;
+}
+
+.sections #section2{
+	background: url(imgs/2.jpg) no-repeat;
+	background-size: cover;	
+}
+
+.sections #section3{
+	background: url(imgs/3.jpg) no-repeat;
+	background-size: cover;	
+}
+
+.sections #section4{
+	background: url(imgs/4.jpg) no-repeat;
+	background-size: cover;
+}
