@@ -11,6 +11,8 @@
 
 			}
 		}
+
+		return pageSwitch;
 	})();
 
 
@@ -23,6 +25,8 @@
 				instance = new pageSwitch(me, options);
 				me.data('pageSwitch', instance);
 			}
+
+			if($.type(options) === 'string') return instance[options]();
 		})
 	};
 
