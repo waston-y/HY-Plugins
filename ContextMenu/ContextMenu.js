@@ -20,7 +20,7 @@
 	$.fn.ContextMenu.default = {
 		list: [], //应当显示的列表集合 { 'label': '选项1', callback: function(){//....do something....//}}
 		listStyle: 'none',	// css中的listStyle属性(采用ul标签)
-		lineHeight: 30,
+		lineHeight: '30px',
 	}
 	
 	/* 检测参数是否合法 */
@@ -32,7 +32,7 @@
     function init(opts){
     	//添加
     	var mask = $("<div></div>",{
-    		id: 'contextMask',	click: function(){close();}
+    		id: 'contextMask', click: function(){close();}
     	}).css({
     		'display': 'none', 'z-index': '999', 'height': '100%',	'width': '100%',
     		'position':'absolute',	'top': 0
@@ -42,20 +42,31 @@
     		'list-style': opts.listStyle,
     		'position': 'absolute',
     		'top': 20,
-    		'left': 50
-    	})appendTo(mask);
+    		'left': 50,
+    		'minWidth': '240px'
+    	}).appendTo(mask);
 
     	opts.list.forEach(function(element, index){
-    		$('<li>'+element.label+'</li>',{ 
-    			click: function(){
-    				element.callback;
-    			},
-    			mouseenter: function(event) {
-    				console.log(this);
-    			}
-    		}).css({
+    		$('<li>'+element.label+'</li>').css({
     			'line-height': opts.lineHeight,
     			'cursor': 'pointer',
+    			'z-index': 1000,
+    			'background': '#ffffff',
+    			'color': 'black'
+    		}).bind('click', function(event) {
+    			/* Act on the event */
+    			console.log('asdadsasf');
+    		}).bind('mouseout', function(){
+				$(this).css({
+					'background': '#ffffff',
+					'color': 'black'
+				});
+    		}).bind('mouserover', function(event) {
+    			/* Act on the event */
+    			$(this).css({
+					'background': '#007ACC',
+					'color': 'white'
+				});
     		}).appendTo(menu);
     	});
     }
