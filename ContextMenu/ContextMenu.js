@@ -8,12 +8,11 @@
 		
 		return this.each(function(){
 			var $this = $(this);  //获取当前dom的jQuery对象,这里指当前循环的dom对象
-			$this.bind('click', function(event) {
-				console.log($('#contextMask'));
+			$this.bind('click', function(event, opts) {
 				$('#contextMask').css('display', 'block');
+				console.log('X:'+ event.clientX +',Y:'+ event.clientY)
 			});
-			_init();
-			$this.onclick = btnClick();
+			init(opts);
 		})
 	}
 
@@ -24,30 +23,49 @@
 		lineHeight: 30,
 	}
 	
-	//私有方法，检测参数是否合法
+	/* 检测参数是否合法 */
     function _isValid(options) {
         return !options || (options && typeof options === "object") ? true : false;
     }
 
-    function _init(){
+    /* 初始化插件 */
+    function init(opts){
+    	//添加
     	var mask = $("<div></div>",{
-    		id: 'contextMask',
-    		click: function(){
-    			$(this).css('display','none');
-    		}
+    		id: 'contextMask',	click: function(){close();}
     	}).css({
-    		'display': 'none',
-    		'z-index': '999',
-    		'height': '100%',
-    		'width': '100%',
-    		'background':'black',
-    		'position':'absolute',
-    		'top': 0
+    		'display': 'none', 'z-index': '999', 'height': '100%',	'width': '100%',
+    		'position':'absolute',	'top': 0
     	}).appendTo('body');
+    	
+    	var menu = $("<ul></ul>",{id: 'contextMenu'}).css({
+    		'list-style': opts.listStyle,
+    		'position': 'absolute',
+    		'top': 20,
+    		'left': 50
+    	})appendTo(mask);
+
+    	opts.list.forEach(function(element, index){
+    		$('<li>'+element.label+'</li>',{ 
+    			click: function(){
+    				element.callback;
+    			},
+    			mouseenter: function(event) {
+    				console.log(this);
+    			}
+    		}).css({
+    			'line-height': opts.lineHeight,
+    			'cursor': 'pointer',
+    		}).appendTo(menu);
+    	});
     }
 
-    function btnClick(){
-    	console.log('asdaddsa');
+    
+    /* 关闭菜单 */
+    function close(){
+    	var mask = $('#contextMask');
+    	if(mask)
+    		mask.css('display', 'none');
     }
 
 })(jQuery);
